@@ -1,24 +1,25 @@
 # 🔒 Masked PIN Entry (Windows Console)
 
-This Python script allows users to enter a 4-digit PIN with masked input (using asterisks `*`) in a Windows command-line interface. It captures each keystroke without displaying the actual digit entered, providing basic input privacy.
+This Python script provides a secure-feeling, visually masked PIN entry system in the Windows command-line interface. As the user types, digits are replaced by asterisks (`*`) and input is handled without displaying the actual characters. It supports backspace and ignores non-numeric and special keys for a cleaner experience.
 
 ---
 
 ## 📦 Features
 
-- Accepts a fixed-length PIN (e.g., 4 digits)
-- Displays asterisks `*` as you type
-- Hides actual key input using `msvcrt`
-- Clears the screen between inputs for extra privacy
+- Input masking using asterisks
+- Supports backspace for correction
+- Skips special/arrow keys and ignores non-numeric input
+- Clears the screen between keystrokes for visual privacy
+- Uses `msvcrt` for low-level, non-echoed key reading
 
 ---
 
 ## 🧑‍💻 Requirements
 
-- Windows OS  
-- Python 3.x
+- **Windows OS**  
+- **Python 3.x**
 
-> The script uses the `msvcrt` module, which is **Windows-only**.
+> Uses the `msvcrt` module, which is only available on Windows systems.
 
 ---
 
@@ -30,51 +31,64 @@ This Python script allows users to enter a 4-digit PIN with masked input (using 
 python pin_mask.py
 ```
 
-### Example Output:
+You’ll be prompted to enter a PIN like this:
+
 ```
-Enter your 4-digit pin: *
-Enter your 4-digit pin: **
-Enter your 4-digit pin: ***
-Enter your 4-digit pin: ****
-1234
+Pin: *
+Pin: **
+Pin: ***
+Pin: ****
 ```
 
-
-## 🧠 How It Works
-
-- Uses `msvcrt.getch()` to read one character at a time from the console without echoing.
-- `os.system("cls")` clears the screen after each character.
-- Collected digits are joined and converted to an integer at the end.
+If you press backspace, it will remove the last entered digit. Press Enter to submit once you're done.
 
 ---
 
-## 🔐 Security Note
+## 🧠 How It Works
 
-This is a **basic demo** of PIN masking for educational or simple CLI use. It’s not secure for production authentication systems:
-- Input is only masked visually, not encrypted.
-- `os.system("cls")` may cause screen flickering.
+- `msvcrt.getch()` reads single keypresses without showing them.
+- Only numeric characters are accepted (`0-9`).
+- Backspace (`\x08`) lets users correct input.
+- Arrow keys and other special keys are ignored.
+- `os.system("cls")` clears the console after each input to refresh the prompt.
 
 ---
 
 ## 🛠️ Customization
 
-To change the PIN length:
+To change the length of the required PIN or prompt message, modify the `mask_pin()` function call:
+
 ```python
-mask_pin(6)  # for a 6-digit PIN
+mask_pin(6, "Enter 6-digit code: ")  # For 6 digits
 ```
 
+You can also change the message to match your use case.
 
 ---
 
 ## 📁 File Structure
 
 ```
-pin_mask.py     # Contains the mask_pin function
+pin_mask.py     # Contains the mask_pin function and logic
 README.md       # You're reading it!
 ```
+
+---
+
+## 🔐 Security Note
+
+⚠️ This script is intended for **educational and CLI-demo purposes only**.
+
+- The masking is only visual — data is not encrypted or securely stored.
+- Clearing the screen with `os.system("cls")` can be disruptive and inconsistent on some terminals.
 
 ---
 
 ## 📜 License
 
 MIT License
+```
+
+---
+
+Let me know if you’d like a ZIP file version with this `README.md` and your Python script inside, or if you want sections added like contributing guidelines or credits.
