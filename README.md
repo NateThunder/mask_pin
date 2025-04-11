@@ -1,94 +1,91 @@
+Here’s an updated and cleaned-up version of your `README.md` to match the features across your three scripts (`mask_pin.py`, `mask_choice.py`, and `mask_pin_infinate.py`). This version organizes things a bit more clearly, reflects the variations of your functions, and is more beginner-friendly:
+
+---
+
 # 🔒 Masked PIN Entry (Windows Console)
 
-This Python script provides a secure-feeling, visually masked PIN entry system in the Windows command-line interface. As the user types, digits are replaced by asterisks (`*`) and input is handled without displaying the actual characters. It supports backspace and ignores non-numeric and special keys for a cleaner experience.
+This project provides secure-feeling, visually masked PIN entry tools for the Windows command line using Python. As users type their PIN, digits are replaced with asterisks (`*`) to prevent shoulder-surfing. The system handles input in real-time without echoing typed characters.
 
 ---
 
 ## 📦 Features
 
-- Input masking using asterisks
-- Supports backspace for correction
-- Skips special/arrow keys and ignores non-numeric input
-- Clears the screen between keystrokes for visual privacy
-- Uses `msvcrt` for low-level, non-echoed key reading
+- 🔢 Accepts digit-only input (`0-9`)
+- ✨ Masking with asterisks (`*`) during typing
+- ⬅️ Supports backspace for correction
+- ⌨️ Ignores arrow keys and other non-numeric input
+- 🧼 Clears screen between keystrokes for better visual privacy
+- ⚙️ Multiple modes: fixed-length, infinite-length, and confirmation
 
 ---
 
 ## 🧑‍💻 Requirements
 
-- **Windows OS**  
+- **Windows OS**
 - **Python 3.x**
 
-> Uses the `msvcrt` module, which is only available on Windows systems.
+> Uses the `msvcrt` module, which is **only available on Windows**.
 
 ---
 
 ## 🚀 Usage
 
-### Run the script:
+Each file offers a different variation of the masked input function:
 
-```bash
-python pin_mask.py
+### `mask_pin.py`  
+**Use Case:** Fixed-length PIN  
+```python
+mask_pin(length=4, message="Enter PIN: ")
 ```
 
-You’ll be prompted to enter a PIN like this:
-
-```
-Pin: *
-Pin: **
-Pin: ***
-Pin: ****
+### `mask_pin_infinate.py`  
+**Use Case:** Infinite-length PIN until Enter is pressed  
+```python
+mask_pin(message="Enter PIN: ")
 ```
 
-If you press backspace, it will remove the last entered digit. Press Enter to submit once you're done.
+### `mask_choice.py`  
+**Use Case:** Optional confirmation and flexible-length support  
+```python
+mask_pin(message="Enter PIN: ", length=4, confirm=True)
+```
 
 ---
 
 ## 🧠 How It Works
 
-- `msvcrt.getch()` reads single keypresses without showing them.
-- Only numeric characters are accepted (`0-9`).
-- Backspace (`\x08`) lets users correct input.
-- Arrow keys and other special keys are ignored.
-- `os.system("cls")` clears the console after each input to refresh the prompt.
+- `msvcrt.getch()` reads individual keypresses without echoing them.
+- Non-numeric and special keys are ignored.
+- Backspace (`\x08`) removes the last digit.
+- `os.system("cls")` clears the screen after each keystroke.
+- Input is visually masked with asterisks (`*`), but the actual digits are stored in memory.
 
 ---
 
-## 🛠️ Customization
-
-To change the length of the required PIN or prompt message, modify the `mask_pin()` function call:
-
-```python
-mask_pin(6, "Enter 6-digit code: ")  # For 6 digits
-```
-
-You can also change the message to match your use case.
-
----
-
-## 📁 File Structure
+## 📁 File Overview
 
 ```
-pin_mask.py     # Contains the mask_pin function and logic
-README.md       # You're reading it!
+mask_pin.py           # Basic fixed-length masked PIN entry
+mask_pin_infinate.py  # Infinite-length masked PIN entry
+mask_choice.py        # Flexible version with optional confirmation
+README.md             # Documentation (this file)
 ```
 
 ---
 
 ## 🔐 Security Note
 
-⚠️ This script is intended for **educational and CLI-demo purposes only**.
+⚠️ These scripts are for **educational/demo purposes** only.
 
-- The masking is only visual — data is not encrypted or securely stored.
-- Clearing the screen with `os.system("cls")` can be disruptive and inconsistent on some terminals.
+- Input is only masked visually; no encryption is involved.
+- Console clearing may behave differently across terminal emulators.
 
 ---
 
 ## 📜 License
 
 MIT License
-```
 
 ---
 
-Let me know if you’d like a ZIP file version with this `README.md` and your Python script inside, or if you want sections added like contributing guidelines or credits.
+Would you like me to bundle all this in a zip or add sections like **Contributing**, **Authors**, or **To-Do**?
