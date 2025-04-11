@@ -75,13 +75,3 @@ README.md             # Documentation (this file)
 
 - Input is only masked visually; no encryption is involved.
 - Console clearing may behave differently across terminal emulators.
-
----
-
-## 📜 License
-
-MIT License
-
----
-
-Would you like me to bundle all this in a zip or add sections like **Contributing**, **Authors**, or **To-Do**?
