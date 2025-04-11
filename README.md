@@ -1,7 +1,3 @@
-Here’s an updated and cleaned-up version of your `README.md` to match the features across your three scripts (`mask_pin.py`, `mask_choice.py`, and `mask_pin_infinate.py`). This version organizes things a bit more clearly, reflects the variations of your functions, and is more beginner-friendly:
-
----
-
 # 🔒 Masked PIN Entry (Windows Console)
 
 This project provides secure-feeling, visually masked PIN entry tools for the Windows command line using Python. As users type their PIN, digits are replaced with asterisks (`*`) to prevent shoulder-surfing. The system handles input in real-time without echoing typed characters.
