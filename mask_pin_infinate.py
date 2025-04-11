@@ -1,13 +1,13 @@
 import os
 import msvcrt
 
-def mask_pin(length, message):
+def mask_pin(message):
     def clear_console():
         os.system("cls" if os.name == "nt" else "clear")
 
     digits = []
 
-    while len(digits) < length:
+    while True:
         clear_console()
         print(f"{message}{'*' * len(digits)}", flush=True, end="")
 
@@ -41,7 +41,7 @@ def mask_pin(length, message):
     else:
         return None
 
-pin_result = mask_pin(4, 'Pin: ')
+pin_result = mask_pin('Pin: ')
 if pin_result is not None:
     print(f"Your PIN is: {pin_result}")
 else:
