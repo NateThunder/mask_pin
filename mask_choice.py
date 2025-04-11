@@ -50,9 +50,9 @@ def mask_pin(message="Pin: ", length=None, confirm=False):
 # pin_result = mask_pin(4, 'Pin: ')
 
 # Infinite length PIN until Enter:
-pin_result = mask_pin('Pin: ',4, True)
+# pin_result = mask_pin('Pin: ',4, True)
 
-if pin_result is not None:
-    print(f"Your PIN is: {pin_result}")
-else:
-    print("No PIN entered.")
+# if pin_result is not None:
+#     print(f"Your PIN is: {pin_result}")
+# else:
+#     print("No PIN entered.")
